@@ -4,7 +4,6 @@ import {
 } from 'react-native';
 
 import HomeHorizontalScrollView from '../../components/HomeHorizontalScrollView';
-//jhkjhh
 const { width } = Dimensions.get('window');
 export default class HomeScreen extends Component {
   static navigationOptions = {
