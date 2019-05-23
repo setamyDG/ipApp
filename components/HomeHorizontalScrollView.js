@@ -8,6 +8,7 @@ import {
   TouchableWithoutFeedback,
   View,
 } from 'react-native';
+import LinearGradient from 'react-native-linear-gradient';
 
 // todo: usun inline style
 
@@ -58,83 +59,45 @@ export default class HomeHorizontalScrollView extends Component {
                   >
                     <View>
                       <Text
-                        style={{
-                          paddingTop: 20,
-                          alignSelf: 'center',
-                          fontSize: 24,
-                          fontWeight: '700',
-                          paddingHorizontal: 20,
-                          color: 'white',
-                        }}
+                        style={styles.headerModalText}
                       >
                         {this.props.headerModalText}
                       </Text>
                       <Text
-                        style={{
-                          alignSelf: 'center',
-                          fontSize: 15,
-                          fontWeight: '700',
-                          paddingHorizontal: 20,
-                          color: 'white',
-                          marginTop: 30,
-                        }}
+                        style={styles.modalText}
                       >
                         {this.props.modalText}
                       </Text>
                       <Text
-                        style={{
-                          alignSelf: 'center',
-                          fontSize: 15,
-                          fontWeight: '700',
-                          paddingHorizontal: 20,
-                          color: 'white',
-                          marginTop: 35,
-                        }}
+                        style={styles.modalText}
                       >
                         {this.props.modalText2}
                       </Text>
                       <Text
-                        style={{
-                          alignSelf: 'center',
-                          fontSize: 15,
-                          fontWeight: '700',
-                          paddingHorizontal: 20,
-                          color: 'white',
-                          marginTop: 65,
-                        }}
+                        style={styles.modalText}
                       >
                         {this.props.modalText3}
                       </Text>
                       <Text
-                        style={{
-                          alignSelf: 'center',
-                          fontSize: 15,
-                          fontWeight: '700',
-                          paddingHorizontal: 20,
-                          color: 'white',
-                          marginTop: 65,
-                        }}
+                        style={styles.modalText}
                       >
                         {this.props.modalText4}
                       </Text>
-
-                      <TouchableWithoutFeedback
-                        onPress={() => {
-                          this.setModalVisible(!this.state.modalVisible);
-                        }}
+                      <LinearGradient
+                        colors={['transparent', 'transparent']}
+                        start={{ x: 0.0, y: 1.0 }}
+                        end={{ x: 1.0, y: 1.0 }}
+                        style={[styles.gradient, { top: 55 }]}
                       >
                         <Text
-                            style={{
-                            alignSelf: 'center',
-                            marginTop: '50%',
-                            color: 'white',
-                            fontSize: 15,
-                            fontWeight: '700',
+                          style={{ color: 'white' }}
+                          onPress={() => {
+                            this.setModalVisible(!this.state.modalVisible);
                           }}
-                          >
-                                                Back
-                          </Text>
-                      </TouchableWithoutFeedback>
+                        >
+BACK
+                        </Text>
+                      </LinearGradient>
                     </View>
                   </ImageBackground>
                 </View>
@@ -153,6 +116,32 @@ const styles = StyleSheet.create({
     marginLeft: 20,
     borderWidth: 0.5,
     borderColor: 'black',
+  },
+  headerModalText: {
+    alignSelf: 'center',
+    fontSize: 15,
+    fontWeight: '700',
+    paddingHorizontal: 20,
+    color: 'white',
+    marginTop: 30,
+  },
+  modalText: {
+    alignSelf: 'center',
+    fontSize: 15,
+    fontWeight: '700',
+    paddingHorizontal: 20,
+    color: 'white',
+    marginTop: 35,
+  },
+  gradient: {
+    height: 40,
+    width: '50%',
+    alignItems: 'center',
+    borderRadius: 20,
+    justifyContent: 'center',
+    borderWidth: 2,
+    alignSelf: 'center',
+    borderColor: 'white',
   },
 
 });

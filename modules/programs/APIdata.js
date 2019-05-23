@@ -1,3 +1,4 @@
+//przyklad #1
 import React from 'react';
 import {
   ActivityIndicator, Text, View, StyleSheet,

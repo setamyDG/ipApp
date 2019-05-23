@@ -1,9 +1,10 @@
 import React, { Component } from 'react';
 import {
-  Alert, KeyboardAvoidingView, StyleSheet, Text, TextInput, View,
+  Alert, KeyboardAvoidingView, StyleSheet, Text, TextInput, View, TouchableOpacity,
 } from 'react-native';
 import LinearGradient from 'react-native-linear-gradient';
 import { withNavigation } from 'react-navigation';
+import FadeAnimation from '../animations/view/FadeAnimation';
 
 // todo: usun inline style
 
@@ -34,34 +35,20 @@ class LoginForm extends Component {
       return (
         <View>
           <KeyboardAvoidingView behavior="position">
-            <View style={styles.container}>
+            <FadeAnimation style={styles.container}>
               <TextInput
-                style={{
-                  backgroundColor: 'rgba(255, 255, 255, 0.3)',
-                  width: '80%',
-                  height: '12%',
-                  borderRadius: 20,
-                  textAlign: 'center',
-                  marginBottom: 20,
-                  marginTop: 60,
-                  color: 'white',
-                }}
+                style={styles.loginInput}
                 placeholder="USERNAME"
                 returnKeyType="next"
+                placeholderTextColor="black"
                 onSubmitEditing={() => this.passwordRef.focus()}
                 onChangeText={value => this.setState({ username: value })}
                 value={this.state.username}
               />
               <TextInput
-                style={{
-                  backgroundColor: 'rgba(255, 255, 255, 0.3)',
-                  width: '80%',
-                  height: '12%',
-                  borderRadius: 20,
-                  textAlign: 'center',
-                  color: 'white',
-                }}
+                style={styles.passwordInput}
                 placeholder="PASSWORD"
+                placeholderTextColor="black"
                 secureTextEntry
                 returnKeyType="go"
                 ref={(ref) => {
@@ -70,25 +57,27 @@ class LoginForm extends Component {
                 onChangeText={value => this.setState({ password: value })}
                 value={this.state.password}
               />
-              <LinearGradient
-                colors={['transparent', 'transparent']}
-                start={{ x: 0.0, y: 1.0 }}
-                end={{ x: 1.0, y: 1.0 }}
-                style={[styles.gradient, { top: 45 }]}
-              >
-                <Text style={{ color: 'white' }} onPress={() => this.ChceckLoginForm()}>
+              <TouchableOpacity style={[styles.gradient, { top: 45 }]} onPress={() => this.ChceckLoginForm()}>
+                <LinearGradient
+                  colors={['transparent', 'transparent']}
+                  start={{ x: 0.0, y: 1.0 }}
+                  end={{ x: 1.0, y: 1.0 }}
+                >
+                  <Text style={{ color: 'white' }}>
                                 LOGIN
-                </Text>
-              </LinearGradient>
-              <LinearGradient
-                colors={['transparent', 'transparent']}
-                start={{ x: 0.0, y: 1.0 }}
-                end={{ x: 1.0, y: 1.0 }}
-                style={[styles.gradient, { top: 60 }]}
-              >
-                <Text style={{ color: 'white' }}>CREATE ACCOUNT</Text>
-              </LinearGradient>
-            </View>
+                  </Text>
+                </LinearGradient>
+              </TouchableOpacity>
+              <TouchableOpacity style={[styles.gradient, { top: 60 }]} onPress={() => this.state.navigation.navigate('CreateAccount')}>
+                <LinearGradient
+                  colors={['transparent', 'transparent']}
+                  start={{ x: 0.0, y: 1.0 }}
+                  end={{ x: 1.0, y: 1.0 }}
+                >
+                  <Text style={{ color: 'white' }}>CREATE ACCOUNT</Text>
+                </LinearGradient>
+              </TouchableOpacity>
+            </FadeAnimation>
           </KeyboardAvoidingView>
         </View>
       );
@@ -113,5 +102,23 @@ const styles = StyleSheet.create({
     justifyContent: 'center',
     borderWidth: 2,
     borderColor: 'white',
+  },
+  loginInput: {
+    backgroundColor: 'rgba(255, 255, 255, 0.3)',
+    width: '80%',
+    height: '12%',
+    borderRadius: 20,
+    textAlign: 'center',
+    marginBottom: 20,
+    marginTop: 60,
+    color: 'white',
+  },
+  passwordInput: {
+    backgroundColor: 'rgba(255, 255, 255, 0.3)',
+    width: '80%',
+    height: '12%',
+    borderRadius: 20,
+    textAlign: 'center',
+    color: 'white',
   },
 });

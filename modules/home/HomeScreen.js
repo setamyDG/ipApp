@@ -1,9 +1,11 @@
 import React, { Component } from 'react';
 import {
-  Dimensions, Image, Platform, ScrollView, StyleSheet, Text, View,
+  Dimensions, Platform, ScrollView, StyleSheet, Text, View, StatusBar,
 } from 'react-native';
 
+import Icon from 'react-native-vector-icons/FontAwesome';
 import HomeHorizontalScrollView from '../../components/HomeHorizontalScrollView';
+import FadeAnimation from '../../animations/image/FadeAnimation';
 
 const { width } = Dimensions.get('window');
 export default class HomeScreen extends Component {
@@ -16,10 +18,24 @@ export default class HomeScreen extends Component {
       textAlign: 'center',
       alignSelf: 'center',
       flex: 1,
+      marginRight: -45,
     },
+    headerRight: (
+      <Icon style={{ marginRight: 20 }} name="sign-out" size={25} color="black" onPress={() => this.navigation.navigate('Login')} />
+    ),
   };
 
+  componentDidMount() {
+    StatusBar.setHidden(true);
+  }
+
   render() {
+    const fadeAnimation = (
+      <FadeAnimation
+        source={require('../../assets/images/plant1.jpeg')}
+        style={styles.imageView}
+      />
+    );
     return (
       <ScrollView
         style={styles.container}
@@ -31,7 +47,7 @@ export default class HomeScreen extends Component {
               What can we help you find, Daniel?
           </Text>
 
-          <View style={{ height: 130, marginTop: 20 }}>
+          <View style={styles.horizontalView}>
             <ScrollView horizontal showsHorizontalScrollIndicator={false}>
               <HomeHorizontalScrollView
                 imageUri={require('../../assets/images/plant2.jpg')}
@@ -62,26 +78,16 @@ export default class HomeScreen extends Component {
               />
             </ScrollView>
           </View>
+        </View>
 
-          <View style={{ marginTop: 40, paddingHorizontal: 20 }}>
-            <Text style={{ fontSize: 24, fontWeight: '700' }}>Introducing iPlants</Text>
-            <Text style={{ fontWeight: '100', marginTop: 10 }}>
+        <View style={{ marginTop: 40, paddingHorizontal: 20 }}>
+          <Text style={{ fontSize: 24, fontWeight: '700' }}>Introducing iPlants</Text>
+          <Text style={{ fontWeight: '100', marginTop: 10 }}>
                 A new selection of plants verified for quality & comfort.
-            </Text>
-            <View style={{ width: width - 40, height: 200, marginTop: 20 }}>
-              <Image
-                style={{
-                  flex: 1,
-                  height: null,
-                  width: null,
-                  resizeMode: 'cover',
-                  borderRadius: 5,
-                  borderWidth: 1,
-                  borderColor: '#dddddd',
-                }}
-                source={require('../../assets/images/plant1.jpeg')}
-              />
-            </View>
+          </Text>
+          <View style={{ width: width - 40, height: 200, marginTop: 20 }} />
+          <View>
+            {fadeAnimation}
           </View>
         </View>
       </ScrollView>
@@ -93,6 +99,11 @@ const styles = StyleSheet.create({
   container: {
     flex: 1,
     backgroundColor: '#fff',
+  },
+  horizontalView: {
+    height: 130,
+    marginTop: 20,
+    backgroundColor: 'transparent',
   },
   developmentModeText: {
     marginBottom: 20,
@@ -175,5 +186,11 @@ const styles = StyleSheet.create({
   helpLinkText: {
     fontSize: 14,
     color: '#2e78b7',
+  },
+  imageView: {
+    height: 270,
+    width: 370,
+    alignSelf: 'stretch',
+    marginTop: -200,
   },
 });

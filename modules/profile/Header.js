@@ -1,33 +1,38 @@
 import React, { Component } from 'react';
 import {
-  Dimensions,
-  Image,
+  Animated,
+  Dimensions, Easing,
   ImageBackground,
   StyleSheet,
   View,
 } from 'react-native';
-import { SocialIcon } from 'react-native-elements/src/index';
+import { SocialIcon } from 'react-native-elements';
+import SpringAnimation from '../../animations/image/SpringAnimation';
 
 const backgroundImg = require('../../assets/images/headerHome.jpeg');
 const profilePic = require('../../assets/images/95mine.jpg');
 
 export default class Header extends Component {
   render() {
+    const springAnimation = (
+      <SpringAnimation
+        source={profilePic}
+        style={styles.pic}
+      />
+    );
     return (
-
       <View style={styles.container}>
         <ImageBackground style={styles.headerBackground} source={backgroundImg}>
           <View style={styles.header}>
             <View style={styles.profilePicCircle}>
-              <Image style={styles.pic} source={profilePic} />
+              {springAnimation}
+            </View>
+            <View style={{ flexDirection: 'row', alignSelf: 'center' }}>
+              <SocialIcon type="twitter"  />
+              <SocialIcon type="facebook" />
+              <SocialIcon type="instagram" />
             </View>
 
-            <View style={{ flex: 1, flexDirection: 'row', marginTop: 5 }}>
-              <SocialIcon type="twitter" />
-              <SocialIcon type="instagram" />
-              <SocialIcon type="facebook" />
-              <SocialIcon type="google-plus-official" />
-            </View>
           </View>
         </ImageBackground>
       </View>
@@ -39,6 +44,13 @@ const styles = StyleSheet.create({
   container: {
 
   },
+  smh: {
+    marginTop: 5,
+    flex: 1,
+    height: 20,
+    width: 20,
+    backgroundColor: '#5ad',
+  },
   headerBackground: {
     height: 270,
     width: '100%',
@@ -46,7 +58,6 @@ const styles = StyleSheet.create({
   },
   header: {
     flex: 1,
-    alignItems: 'center',
     justifyContent: 'center',
     padding: 20,
   },
@@ -56,6 +67,7 @@ const styles = StyleSheet.create({
     borderRadius: Dimensions.get('window').height - 4.5,
     borderWidth: 7,
     borderColor: 'rgba(0,0,0, 0.4)',
+    alignSelf: 'center',
   },
   pic: {
     flex: 1,
@@ -65,17 +77,5 @@ const styles = StyleSheet.create({
     borderColor: '#fff',
     borderWidth: 4,
     opacity: 0.8,
-  },
-  addPlantTxt: {
-    fontSize: 15,
-    color: '#fff',
-    textAlign: 'center',
-  },
-  buttonStyle: {
-    height: 40,
-    width: 100,
-    alignItems: 'center',
-    borderRadius: 20,
-    justifyContent: 'center',
   },
 });
