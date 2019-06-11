@@ -1,14 +1,9 @@
 import React, { Component } from 'react';
-import {
-  StyleSheet,
-  View,
-} from 'react-native';
+import { StyleSheet, View } from 'react-native';
 
 export default class Separator extends Component {
   render() {
-    return (
-      <View style={styles.separator} />
-    );
+    return <View style={styles.separator} />;
   }
 }
 
@@ -18,5 +13,4 @@ const styles = StyleSheet.create({
     height: '2%',
     backgroundColor: '#fff',
   },
-
 });

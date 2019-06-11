@@ -1,6 +1,12 @@
 import React, { Component } from 'react';
 import {
-  ScrollView, StyleSheet, Animated, TouchableOpacity, Text, Easing, Dimensions, Image,View,
+  Animated,
+  Dimensions,
+  Easing,
+  StyleSheet,
+  Text,
+  TouchableOpacity,
+  View,
 } from 'react-native';
 import Icon from 'react-native-vector-icons/FontAwesome';
 
@@ -27,7 +33,13 @@ export default class ProgramsScreen extends Component {
       marginRight: -45,
     },
     headerRight: (
-      <Icon style={{ marginRight: 20 }} name="sign-out" size={25} color="black" onPress={() => this.navigation.navigate('Login')} />
+      <Icon
+        style={{ marginRight: 20 }}
+        name="sign-out"
+        size={25}
+        color="black"
+        onPress={() => this.navigation.navigate('Login')}
+      />
     ),
   };
 
@@ -50,7 +62,7 @@ export default class ProgramsScreen extends Component {
   };
 
   springAnimation = () => {
-    Animated.spring(this.state.springValue,{
+    Animated.spring(this.state.springValue, {
       toValue: 1,
       friction: 1,
     }).start();
@@ -60,14 +72,12 @@ export default class ProgramsScreen extends Component {
     return (
       <View style={styles.container}>
         <Animated.Image
-            onLoad={this.fadeAnimation}
+          onLoad={this.fadeAnimation}
           source={require('../../assets/images/95mine.jpg')}
-          style={[styles.imageView,{ opacity: this.state.fadeValue },
-          ]}
-              // { left: this.state.xValue }]}
-            //  { transform: [{ scale: this.state.springValue }], alignSelf: 'center' }]}
-        >
-        </Animated.Image>
+          style={[styles.imageView, { opacity: this.state.fadeValue }]}
+          // { left: this.state.xValue }]}
+          //  { transform: [{ scale: this.state.springValue }], alignSelf: 'center' }]}
+        />
         <TouchableOpacity style={styles.button} onPress={this.fadeAnimation}>
           <Text style={styles.buttonText}>animate</Text>
         </TouchableOpacity>
@@ -88,7 +98,7 @@ const styles = StyleSheet.create({
   container: {
     flex: 1,
     justifyContent: 'center',
-    //alignItems: 'center',
+    // alignItems: 'center',
     paddingTop: 15,
     backgroundColor: '#fff',
   },

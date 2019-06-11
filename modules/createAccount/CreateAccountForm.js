@@ -1,28 +1,29 @@
 import React, { Component } from 'react';
-import {
-  StyleSheet, Text,
-} from 'react-native';
-import Separator from '../profile/Separator';
-import CreateAccountTxtInputs from './CreateAccountTxtInputs';
+import { StyleSheet, Text } from 'react-native';
+
 import FadeAnimation from '../../animations/view/FadeAnimation';
+import Separator from '../profile/Separator';
+
+import CreateAccountTxtInputs from './CreateAccountTxtInputs';
 
 export default class CreateAccountForm extends Component {
   render() {
     return (
       <FadeAnimation style={styles.darkContainer}>
-
         <Separator />
         <Text
           style={{
-            color: 'white', fontSize: 35, fontStyle: 'italic', alignSelf: 'center',
+            color: 'white',
+            fontSize: 35,
+            fontStyle: 'italic',
+            alignSelf: 'center',
           }}
         >
-                    SIGN UP
+          SIGN UP
         </Text>
         <Separator />
         <CreateAccountTxtInputs />
       </FadeAnimation>
-
     );
   }
 }
