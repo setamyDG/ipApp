@@ -21,8 +21,8 @@ export default class ProgramsScreen extends Component {
     };
   }
 
-  static navigationOptions = {
-    title: 'Programs',
+  static navigationOptions = ({ navigation }) => ({
+    title: 'Home',
     alignSelf: 'center',
     headerTitleStyle: {
       color: 'black',
@@ -38,10 +38,10 @@ export default class ProgramsScreen extends Component {
         name="sign-out"
         size={25}
         color="black"
-        onPress={() => this.navigation.navigate('Login')}
+        onPress={() => navigation.navigate('Login')}
       />
     ),
-  };
+  });
 
   fadeAnimation = () => {
     Animated.timing(this.state.fadeValue, {

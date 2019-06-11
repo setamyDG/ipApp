@@ -1,5 +1,7 @@
 import React, { Component } from 'react';
-import { Dimensions, Platform, ScrollView, StatusBar, StyleSheet, Text, View } from 'react-native';
+import {
+  Dimensions, Platform, ScrollView, StatusBar, StyleSheet, Text, View,
+} from 'react-native';
 import Icon from 'react-native-vector-icons/FontAwesome';
 
 import FadeAnimation from '../../animations/image/FadeAnimation';
@@ -7,7 +9,8 @@ import HomeHorizontalScrollView from '../../components/HomeHorizontalScrollView'
 
 const { width } = Dimensions.get('window');
 export default class HomeScreen extends Component {
-  static navigationOptions = {
+
+  static navigationOptions = ({ navigation }) => ({
     title: 'Home',
     alignSelf: 'center',
     headerTitleStyle: {
@@ -24,10 +27,10 @@ export default class HomeScreen extends Component {
         name="sign-out"
         size={25}
         color="black"
-        onPress={() => this.navigation.navigate('Login')}
+        onPress={() => navigation.navigate('Login')}
       />
     ),
-  };
+  });
 
   componentDidMount() {
     StatusBar.setHidden(true);

@@ -12,8 +12,8 @@ export default class ProfileScreen extends Component {
     this.state = { navigation: this.props.navigation };
   }
 
-  static navigationOptions = {
-    title: 'Profile',
+  static navigationOptions = ({ navigation }) => ({
+    title: 'Home',
     alignSelf: 'center',
     headerTitleStyle: {
       color: 'black',
@@ -29,10 +29,10 @@ export default class ProfileScreen extends Component {
         name="sign-out"
         size={25}
         color="black"
-        onPress={() => this.navigation.navigate('Login')}
+        onPress={() => navigation.navigate('Login')}
       />
     ),
-  };
+  });
 
   componentDidMount() {
     StatusBar.setHidden(true);
