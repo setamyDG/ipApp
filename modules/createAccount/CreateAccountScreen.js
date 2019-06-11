@@ -1,11 +1,8 @@
 import React, { Component } from 'react';
-import {
-  Alert,
-  ImageBackground, StyleSheet, Text, TouchableOpacity,
-} from 'react-native';
+import { Alert, ImageBackground, StyleSheet, Text, TouchableOpacity } from 'react-native';
 import LinearGradient from 'react-native-linear-gradient';
-import CreateAccountForm from './CreateAccountForm';
 
+import CreateAccountForm from './CreateAccountForm';
 
 export default class CreateAccountScreen extends Component {
   signUpPress() {
@@ -21,20 +18,22 @@ export default class CreateAccountScreen extends Component {
       >
         <CreateAccountForm />
 
-        <TouchableOpacity style={[styles.gradient, { top: 45 }]} onPress={() => this.signUpPress()}>
+        <TouchableOpacity
+          style={[styles.gradient, { top: 45 }]}
+          onPress={() => this.signUpPress()}
+        >
           <LinearGradient
             colors={['transparent', 'transparent']}
             start={{ x: 0.0, y: 1.0 }}
             end={{ x: 1.0, y: 1.0 }}
           >
-            <Text
-              style={{ color: 'white' }}
-            >
-          SIGN UP
-            </Text>
+            <Text style={{ color: 'white' }}>SIGN UP</Text>
           </LinearGradient>
         </TouchableOpacity>
-        <TouchableOpacity style={[styles.gradient, { top: 55 }]} onPress={() => navigate('Login')}>
+        <TouchableOpacity
+          style={[styles.gradient, { top: 55 }]}
+          onPress={() => navigate('Login')}
+        >
           <LinearGradient
             colors={['transparent', 'transparent']}
             start={{ x: 0.0, y: 1.0 }}
@@ -44,8 +43,6 @@ export default class CreateAccountScreen extends Component {
           </LinearGradient>
         </TouchableOpacity>
       </ImageBackground>
-
-
     );
   }
 }

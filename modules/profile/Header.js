@@ -1,12 +1,7 @@
 import React, { Component } from 'react';
-import {
-  Animated,
-  Dimensions, Easing,
-  ImageBackground,
-  StyleSheet,
-  View,
-} from 'react-native';
+import { Dimensions, ImageBackground, StyleSheet, View } from 'react-native';
 import { SocialIcon } from 'react-native-elements';
+
 import SpringAnimation from '../../animations/image/SpringAnimation';
 
 const backgroundImg = require('../../assets/images/headerHome.jpeg');
@@ -14,25 +9,17 @@ const profilePic = require('../../assets/images/95mine.jpg');
 
 export default class Header extends Component {
   render() {
-    const springAnimation = (
-      <SpringAnimation
-        source={profilePic}
-        style={styles.pic}
-      />
-    );
+    const springAnimation = <SpringAnimation source={profilePic} style={styles.pic} />;
     return (
       <View style={styles.container}>
         <ImageBackground style={styles.headerBackground} source={backgroundImg}>
           <View style={styles.header}>
-            <View style={styles.profilePicCircle}>
-              {springAnimation}
-            </View>
+            <View style={styles.profilePicCircle}>{springAnimation}</View>
             <View style={{ flexDirection: 'row', alignSelf: 'center' }}>
-              <SocialIcon type="twitter"  />
+              <SocialIcon type="twitter" />
               <SocialIcon type="facebook" />
               <SocialIcon type="instagram" />
             </View>
-
           </View>
         </ImageBackground>
       </View>
@@ -41,9 +28,7 @@ export default class Header extends Component {
 }
 
 const styles = StyleSheet.create({
-  container: {
-
-  },
+  container: {},
   smh: {
     marginTop: 5,
     flex: 1,

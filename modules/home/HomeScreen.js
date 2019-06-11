@@ -1,11 +1,9 @@
 import React, { Component } from 'react';
-import {
-  Dimensions, Platform, ScrollView, StyleSheet, Text, View, StatusBar,
-} from 'react-native';
-
+import { Dimensions, Platform, ScrollView, StatusBar, StyleSheet, Text, View } from 'react-native';
 import Icon from 'react-native-vector-icons/FontAwesome';
-import HomeHorizontalScrollView from '../../components/HomeHorizontalScrollView';
+
 import FadeAnimation from '../../animations/image/FadeAnimation';
+import HomeHorizontalScrollView from '../../components/HomeHorizontalScrollView';
 
 const { width } = Dimensions.get('window');
 export default class HomeScreen extends Component {
@@ -21,7 +19,13 @@ export default class HomeScreen extends Component {
       marginRight: -45,
     },
     headerRight: (
-      <Icon style={{ marginRight: 20 }} name="sign-out" size={25} color="black" onPress={() => this.navigation.navigate('Login')} />
+      <Icon
+        style={{ marginRight: 20 }}
+        name="sign-out"
+        size={25}
+        color="black"
+        onPress={() => this.navigation.navigate('Login')}
+      />
     ),
   };
 
@@ -44,7 +48,7 @@ export default class HomeScreen extends Component {
       >
         <View style={{ flex: 1, backgroundColor: 'white' }}>
           <Text style={{ fontSize: 24, fontWeight: '700', paddingHorizontal: 20 }}>
-              What can we help you find, Daniel?
+            What can we help you find, Daniel?
           </Text>
 
           <View style={styles.horizontalView}>
@@ -83,12 +87,10 @@ export default class HomeScreen extends Component {
         <View style={{ marginTop: 40, paddingHorizontal: 20 }}>
           <Text style={{ fontSize: 24, fontWeight: '700' }}>Introducing iPlants</Text>
           <Text style={{ fontWeight: '100', marginTop: 10 }}>
-                A new selection of plants verified for quality & comfort.
+            A new selection of plants verified for quality & comfort.
           </Text>
           <View style={{ width: width - 40, height: 200, marginTop: 20 }} />
-          <View>
-            {fadeAnimation}
-          </View>
+          <View>{fadeAnimation}</View>
         </View>
       </ScrollView>
     );
